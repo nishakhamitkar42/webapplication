@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: portfolio
+    name: nisha
     runtime: python
     plan: free
     buildCommand: pip install -r requirements.txt

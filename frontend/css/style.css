@@ -146,6 +146,23 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--text-white);
 }
 
+.hero-greeting {
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: var(--text-light);
+    letter-spacing: 0.05em;
+}
+
+.hero-name {
+    font-size: 4.5rem !important;
+    line-height: 1.05 !important;
+    font-weight: 800 !important;
+    background: linear-gradient(135deg, #a78bfa, #60a5fa);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
 .hero-text p {
     font-size: 1.15rem;
     line-height: 1.7;
