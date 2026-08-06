@@ -115,4 +115,77 @@ document.addEventListener('DOMContentLoaded', () => {
             spinner.style.display = 'none';
         }
     }
+
+    // 4. Chatbot Widget (Groq-powered)
+    const chatbotWidget = document.getElementById('chatbotWidget');
+    const chatbotToggle = document.getElementById('chatbotToggle');
+    const chatbotClose = document.getElementById('chatbotClose');
+    const chatbotMessages = document.getElementById('chatbotMessages');
+    const chatbotForm = document.getElementById('chatbotForm');
+    const chatbotInput = document.getElementById('chatbotInput');
+    const chatbotSend = document.getElementById('chatbotSend');
+
+    if (chatbotWidget && chatbotForm) {
+        function openChat() {
+            chatbotWidget.classList.add('open');
+            setTimeout(() => chatbotInput.focus(), 300);
+        }
+
+        function closeChat() {
+            chatbotWidget.classList.remove('open');
+        }
+
+        chatbotToggle.addEventListener('click', openChat);
+        chatbotClose.addEventListener('click', closeChat);
+
+        function appendMessage(role, text) {
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('chat-message', role);
+            const p = document.createElement('p');
+            p.textContent = text;
+            messageDiv.appendChild(p);
+            chatbotMessages.appendChild(messageDiv);
+            chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+        }
+
+        function setSending(isSending) {
+            chatbotSend.disabled = isSending;
+            chatbotInput.disabled = isSending;
+            chatbotSend.textContent = isSending ? '...' : 'Send';
+        }
+
+        chatbotForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const message = chatbotInput.value.trim();
+            if (!message) return;
+
+            appendMessage('user', message);
+            chatbotInput.value = '';
+            setSending(true);
+
+            try {
+                const response = await fetch('/api/chat', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ message })
+                });
+
+                const result = await response.json();
+
+                if (response.ok && result.status === 'success') {
+                    appendMessage('bot', result.reply);
+                } else {
+                    appendMessage('bot', result.message || 'Sorry, something went wrong. Please try again.');
+                }
+            } catch (err) {
+                console.error('Chat Error:', err);
+                appendMessage('bot', 'Failed to connect to the server. Please try again later.');
+            } finally {
+                setSending(false);
+                chatbotInput.focus();
+            }
+        });
+    }
 });

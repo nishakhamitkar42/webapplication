@@ -11,6 +11,11 @@ ENV/
 *.db
 *.sqlite3
 
+# Environment / Secrets
+.env
+.env.*
+!.env.example
+
 # IDEs
 .idea/
 .vscode/

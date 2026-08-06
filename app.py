@@ -2,9 +2,13 @@
 from flask import Flask
 import os
 import logging
+from dotenv import load_dotenv
 from database.db import init_db
 from controllers.main_controller import main_blueprint
 from controllers.api_controller import api_blueprint
+
+# Load environment variables from .env (local development)
+load_dotenv()
 
 def create_app():
     # Configure logging: DEBUG locally, INFO in production

@@ -34,6 +34,46 @@
         <p>&copy; 2026 Nisha. All rights reserved. Created in MVC model.</p>
     </footer>
 
+    <!-- Chatbot Widget -->
+    <div class="chatbot-widget" id="chatbotWidget">
+        <div class="chatbot-window" id="chatbotWindow">
+            <div class="chatbot-header">
+                <div class="chatbot-header-info">
+                    <div class="chatbot-avatar">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="4" width="18" height="13" rx="2" ry="2"></rect>
+                            <path d="M12 20v-3"></path>
+                            <path d="M8 20h8"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <strong>Nisha Assistant</strong>
+                        <small>Powered by Groq AI</small>
+                    </div>
+                </div>
+                <button type="button" class="chatbot-close" id="chatbotClose" aria-label="Close chat">&times;</button>
+            </div>
+            <div class="chatbot-messages" id="chatbotMessages">
+                <div class="chat-message bot">
+                    <p>Hi! I'm Nisha's virtual assistant. Ask me about her experience, skills, projects, or certifications!</p>
+                </div>
+            </div>
+            <form class="chatbot-input-form" id="chatbotForm">
+                <input type="text" id="chatbotInput" class="chatbot-input" placeholder="Type your message..." autocomplete="off" maxlength="1000">
+                <button type="submit" class="chatbot-send" id="chatbotSend">Send</button>
+            </form>
+        </div>
+        <button type="button" class="chatbot-toggle" id="chatbotToggle" aria-label="Open chat">
+            <svg class="chatbot-icon-open" xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+            </svg>
+            <svg class="chatbot-icon-close" xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        </button>
+    </div>
+
     <!-- Global Application Scripts -->
     <script src="/frontend/js/main.js"></script>
 </body>

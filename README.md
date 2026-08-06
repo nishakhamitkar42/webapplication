@@ -71,10 +71,10 @@ uv venv
 
 ### 3. Install Dependencies
 
-Install the project dependencies (Flask):
+Install the project dependencies (Flask, Groq):
 
 ```bash
-uv pip install flask
+uv pip install -r requirements.txt
 ```
 
 Or run directly using `uv run`:
@@ -83,7 +83,22 @@ Or run directly using `uv run`:
 uv run python app.py
 ```
 
-### 4. Run the Application
+### 4. Set the Groq API Key (Chatbot)
+
+The chatbot widget calls the Groq API. Set your `GROQ_API_KEY` environment variable:
+
+- **Windows (PowerShell)**:
+  ```powershell
+  $env:GROQ_API_KEY = "your_groq_api_key"
+  ```
+- **Linux/macOS**:
+  ```bash
+  export GROQ_API_KEY="your_groq_api_key"
+  ```
+
+You can also set `GROQ_MODEL` to override the default model (`llama-3.3-70b-versatile`). Get a free API key at https://console.groq.com.
+
+### 5. Run the Application
 
 Start the Flask development server:
 
